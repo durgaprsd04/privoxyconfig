@@ -1,12 +1,20 @@
-# import sys
 import socket
+import time
 s = socket.socket()
 host = socket.gethostname()
 port = 8090
 s.connect((host, port))
 print s.recv(1024)
-print "Please enter a valid url"
-url = raw_input("URL:")
-print url
-s.send(url)
+while True:
+    valid = True
+    print "Please enter a valid url"
+    url = raw_input("URL:")
+    s.send(url)
+    recieved_msg = s.recv(1024)
+    print recieved_msg
+    if recieved_msg == "The URL is not valid":
+        print "Sleeping........."
+        time.sleep(10)
+    else:
+        time.sleep(5)
 s.close()
