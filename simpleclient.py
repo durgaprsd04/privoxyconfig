@@ -4,9 +4,9 @@ s = socket.socket()
 host = socket.gethostname()
 port = 8090
 s.connect((host, port))
-print s.recv(1024)
 while True:
-    valid = True
+    servermsg = s.recv(1024)
+    print servermsg
     print "Please enter a valid url"
     url = raw_input("URL:")
     s.send(url)
