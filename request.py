@@ -32,7 +32,7 @@ for i, worksheet in enumerate(spreadsheet.worksheets()):
         writer.writerows(worksheet.get_all_values())
 max=i
 i=0
-fp = open("user.action",'w')
+fp = open("user.action",'a')
 print "There is",i+1,"worksheets created."
 print "Additions can be seen on the later ones"
 #for i in range(0,max):
@@ -40,11 +40,18 @@ with open('response-worksheet0.csv', 'rb') as f:
     reader = csv.reader(f)
     for row in reader:
     	valid = True
+
         url=row[1]
         print url
         i=i+1
-        if i>1:	
-        	fp.write(row[1]+"\n")
+        if i>1:
+        	try:
+        		rfc3987.parse(url,rule="IRI")
+        	except Exception as e:
+        		valid = False
+        	if valid:
+        		fp.write(row[1].split('/')[2]+"\n")
+
 
 
 
