@@ -68,7 +68,7 @@ choice = raw_input("choices:")
 choices = choice.split(',')
 for ch in choices:
     try:
-        del line[int(ch)-1]
+        del line[int(ch)]
     except Exception as e:
         pass
 fp = open("tempuser.action", 'w')
