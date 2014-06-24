@@ -19,8 +19,8 @@ for file1 in file_list:
 print "Enter Username and Password of User logged in earlier"
 #username = raw_input("Username:")
 #password = getpass.getpass()
-username="durgaprsd04@gmail.com"
-password="easypease"
+username="username@gmail.com"
+password="password"
 print (time.strftime("%d/%m/%Y"))
 
 client = gspread.login(username, password)
